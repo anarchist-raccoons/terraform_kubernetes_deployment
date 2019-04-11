@@ -107,7 +107,7 @@ resource "kubernetes_persistent_volume_claim" "primary" {
         storage = "${var.primary_mount_size}"
       }
     }
-    storage_class_name = "${kubernetes_storage_class.default.metadata.0.name}"
+    storage_class_name = "${var.storage_class_name}"
   }
 }
 
@@ -122,22 +122,6 @@ resource "kubernetes_persistent_volume_claim" "second" {
         storage = "${var.second_mount_size}"
       }
     }
-    storage_class_name = "${kubernetes_storage_class.default.metadata.0.name}"
+    storage_class_name = "${var.storage_class_name}"
   }
-}
-
-# Storage Class https://kubernetes.io/docs/concepts/storage/storage-classes/
-# Creates a dynamic volume
-resource "kubernetes_storage_class" "default" {
-  metadata {
-    name = "${var.app_name}"
-    labels {
-      app = "${var.app_name}"
-    }
-  }
-
-  storage_provisioner = "${var.storage_provisioner}"
-  reclaim_policy = "Retain"
-  parameters = "${var.storage_account_params}"
-
 }

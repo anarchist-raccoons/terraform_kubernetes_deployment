@@ -17,19 +17,6 @@ variable "command" {
   default = []
 }
 
-variable "storage_account_params" {
-  type = "map"
-  description = "Parameters map for the Storage Class. The default works with azure_file. See https://kubernetes.io/docs/concepts/storage/storage-classes/"
-  default = {
-    skuname = "Standard_LRS"
-  }
-}
-
-variable "storage_provisioner" {
-  description = "Kubernetes Storage Provisioner. Ensure the storage_account_params are correct."
-  default = "kubernetes.io/azure-file"
-}
-
 variable "second_mount_size" {
   default = "100M"
 }
@@ -44,4 +31,8 @@ variable "resource_version" {
   description = "Unused variable, used to create a dependency sequence."
   type = "list"
   default = []
+}
+
+variable "storage_class_name" {
+  default = "azure_file"
 }
