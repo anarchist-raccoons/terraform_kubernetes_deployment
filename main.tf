@@ -47,27 +47,22 @@ resource "kubernetes_deployment" "default" {
           }
           
           volume_mount {
-            name = "${var.app_name}primary"
+            name = "${var.app_name}"
             mount_path = "${var.primary_mount_path}"
             }
           volume_mount {
-            name = "${var.app_name}second"
-            mount_path = "${var.second_mount_path}"
+            name = "${var.app_name}"
+            mount_path = "${var.secondary_mount_path}"
+            sub_path = "${var.secondary_sub_path}"
             }
 
             command = "${var.command}"
           }
 
         volume {
-          name = "${var.app_name}primary"
+          name = "${var.app_name}"
           persistent_volume_claim {
-          claim_name = "${kubernetes_persistent_volume_claim.primary.metadata.0.name}"
-          }
-        }
-        volume {
-            name = "${var.app_name}second"
-            persistent_volume_claim {
-            claim_name = "${kubernetes_persistent_volume_claim.second.metadata.0.name}"
+          claim_name = "${var.pvc_claim_name}"
           }
         }
       }
@@ -93,35 +88,5 @@ resource "kubernetes_service" "default" {
     }
 
     type = "LoadBalancer"
-  }
-}
-
-resource "kubernetes_persistent_volume_claim" "primary" {
-  metadata {
-    name = "${var.app_name}primary"
-  }
-  spec {
-    access_modes = ["ReadWriteOnce"]
-    resources {
-      requests {
-        storage = "${var.primary_mount_size}"
-      }
-    }
-    storage_class_name = "${var.storage_class_name}"
-  }
-}
-
-resource "kubernetes_persistent_volume_claim" "second" {
-  metadata {
-    name = "${var.app_name}second"
-  }
-  spec {
-    access_modes = ["ReadWriteOnce"]
-    resources {
-      requests {
-        storage = "${var.second_mount_size}"
-      }
-    }
-    storage_class_name = "${var.storage_class_name}"
   }
 }

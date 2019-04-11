@@ -8,20 +8,19 @@ variable "docker_image" { }
 variable "app_name" { }
 variable "port" { }
 
-variable "primary_mount_size" {} 
-variable "primary_mount_path" {}
-
 variable "env_from" { }
 
 variable "command" {
   default = []
 }
 
-variable "second_mount_size" {
-  default = "100M"
+variable "primary_mount_path" {
 }
-variable "second_mount_path" {
-  default = "/data"
+variable "secondary_mount_path" {
+}
+
+variable "secondary_sub_path" {
+  default = ""
 }
 
 variable "image_pull_secrets" {
@@ -33,6 +32,4 @@ variable "resource_version" {
   default = []
 }
 
-variable "storage_class_name" {
-  default = "azure_file"
-}
+variable "pvc_claim_name" {}
