@@ -33,3 +33,7 @@ variable "resource_version" {
 }
 
 variable "pvc_claim_name" {}
+
+variable "replicas" {
+  default = 1
+}
