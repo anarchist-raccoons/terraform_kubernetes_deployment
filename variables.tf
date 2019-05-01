@@ -37,3 +37,8 @@ variable "pvc_claim_name" {}
 variable "replicas" {
   default = 1
 }
+
+variable "load_balancer_source_ranges" {
+  type = "list"
+  default = []
+}

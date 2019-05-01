@@ -88,6 +88,8 @@ resource "kubernetes_service" "default" {
     port {
       port = "${var.port}"
     }
+    
+    load_balancer_source_ranges = "${var.load_balancer_source_ranges}"
 
     type = "LoadBalancer"
   }
