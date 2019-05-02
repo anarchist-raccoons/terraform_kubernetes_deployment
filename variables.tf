@@ -40,6 +40,7 @@ variable "replicas" {
 
 variable "load_balancer_source_ranges" {
   type = "list"
+  default = []
 }
 
 variable "service_type" {
