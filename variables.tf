@@ -45,3 +45,7 @@ variable "load_balancer_source_ranges" {
 variable "service_type" {
   default = "LoadBalancer"
 }
+
+varialble "load_balancer_ip" {
+  default = ""
+}
