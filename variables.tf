@@ -46,6 +46,6 @@ variable "service_type" {
   default = "LoadBalancer"
 }
 
-varialble "load_balancer_ip" {
+variable "load_balancer_ip" {
   default = ""
 }
