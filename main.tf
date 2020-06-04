@@ -12,7 +12,7 @@ resource "kubernetes_deployment" "default" {
   
   metadata {
     name = "${var.app_name}"
-    labels {
+    labels = {
       app = "${var.app_name}"
     }
   }
@@ -20,7 +20,7 @@ resource "kubernetes_deployment" "default" {
   spec {
     replicas = "${var.replicas}"
   
-    selector {
+    selector = {
       match_labels {
         app = "${var.app_name}"
       }
