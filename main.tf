@@ -21,7 +21,7 @@ resource "kubernetes_deployment" "default" {
     replicas = "${var.replicas}"
   
     selector = {
-      match_labels {
+      match_labels = {
         app = "${var.app_name}"
       }
     }
