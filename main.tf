@@ -20,7 +20,7 @@ resource "kubernetes_deployment" "default" {
   spec {
     replicas = "${var.replicas}"
   
-    selector = {
+    selector {
       match_labels = {
         app = "${var.app_name}"
       }
@@ -28,7 +28,7 @@ resource "kubernetes_deployment" "default" {
 
     template {
       metadata {
-        labels {
+        labels = {
           app = "${var.app_name}"
         }
       }
@@ -75,12 +75,12 @@ resource "kubernetes_deployment" "default" {
 resource "kubernetes_service" "default" {
   metadata {
     name = "${var.app_name}"
-    labels {
+    labels = {
       app = "${var.app_name}"
     }
   }
   spec {
-    selector {
+    selector = {
       app = "${kubernetes_deployment.default.metadata.0.labels.app}"
     }
     session_affinity = "ClientIP"
