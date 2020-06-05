@@ -85,19 +85,16 @@ resource "kubernetes_service" "default" {
     }
     session_affinity = "ClientIP"
     
-#    port {
-#      port = "${var.port}"
-#    }
     port {
-      name        = "http"
-      port        = "${var.http_port}"
-      target_port = "${var.http_port}"
+      name        = "primary_port"
+      port        = "${var.primary_port}"
+      target_port = "${var.primary_port}"
     }
 
     port {
-      name        = "https"
-      port        = "${var.https_port}"
-      target_port = "${var.https_port}"
+      name        = "secondary_port"
+      port        = "${var.secondary_port}"
+      target_port = "${var.secondary_port}"
     }
 
     
