@@ -17,8 +17,8 @@ variable "command" {
 
 variable "primary_mount_path" {
 }
-variable "secondary_mount_path" {
-}
+#variable "secondary_mount_path" {
+#}
 
 variable "secondary_sub_path" {
   default = ""
