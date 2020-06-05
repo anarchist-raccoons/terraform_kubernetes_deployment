@@ -88,7 +88,18 @@ resource "kubernetes_service" "default" {
 #    port {
 #      port = "${var.port}"
 #    }
-    port = "${var.port}"
+    port {
+      name        = "http"
+      port        = "${var.http_port}"
+      target_port = "${var.http_port}"
+    }
+
+    port {
+      name        = "https"
+      port        = "${var.https_port}"
+      target_port = "${var.https_port}"
+    }
+
     
     load_balancer_ip = "${var.load_balancer_ip}"
     load_balancer_source_ranges = "${var.load_balancer_source_ranges}"
