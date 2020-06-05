@@ -86,13 +86,13 @@ resource "kubernetes_service" "default" {
     session_affinity = "ClientIP"
     
     port {
-      name        = "primary_port"
+      name        = "primary-port"
       port        = "${var.primary_port}"
       target_port = "${var.primary_port}"
     }
 
     port {
-      name        = "secondary_port"
+      name        = "secondary-port"
       port        = "${var.secondary_port}"
       target_port = "${var.secondary_port}"
     }
