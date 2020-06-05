@@ -85,9 +85,10 @@ resource "kubernetes_service" "default" {
     }
     session_affinity = "ClientIP"
     
-    port {
-      port = "${var.port}"
-    }
+#    port {
+#      port = "${var.port}"
+#    }
+    port = "${var.port}"
     
     load_balancer_ip = "${var.load_balancer_ip}"
     load_balancer_source_ranges = "${var.load_balancer_source_ranges}"
