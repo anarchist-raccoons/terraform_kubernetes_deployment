@@ -6,7 +6,10 @@ variable "client_key" { }
 variable "cluster_ca_certificate" { }
 variable "docker_image" { }
 variable "app_name" { }
-variable "port" { }
+variable "port" {  
+  type = "list"
+  default = []
+}
 
 variable "env_from" { }
 
