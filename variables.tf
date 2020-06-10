@@ -37,7 +37,9 @@ variable "resource_version" {
 }
 
 variable "pvc_claim_name" {}
-variable "secondary_pvc_claim_name" {}
+variable "secondary_pvc_claim_name" {
+  default = ""
+  }
 
 variable "replicas" {
   default = 1
