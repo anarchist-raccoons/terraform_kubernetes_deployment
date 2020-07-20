@@ -110,3 +110,20 @@ resource "kubernetes_service" "default" {
     type = "${var.service_type}"
   }
 }
+
+resource "kubernetes_limit_range" "default" {
+  metadata {
+    name = "{$var.app_name}"
+  }
+  spec {
+    limit {
+      type = "Container"
+      default = {
+        memory = "{$var.container_limit}"
+      }
+      default_request = {
+        memory = "{$var.container_request}"
+      }
+    }
+  }
+}
