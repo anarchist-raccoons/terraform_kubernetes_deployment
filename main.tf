@@ -119,10 +119,10 @@ resource "kubernetes_limit_range" "default" {
     limit {
       type = "Container"
       default = {
-        memory = "{$var.container_limit}"
+        memory = "{$var.container_memory_limit}"
       }
       default_request = {
-        memory = "{$var.container_request}"
+        memory = "{$var.container_memory_request}"
       }
     }
   }
