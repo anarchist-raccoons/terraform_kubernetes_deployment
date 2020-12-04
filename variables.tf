@@ -58,9 +58,8 @@ variable "load_balancer_ip" {
   default = ""
 }
 
-variable "container_memory_limit" {
-  default = "1600Mi"
-}
-variable "container_memory_request" {
-  default = "400Mi"
-}
+variable "container_memory_limit" { }
+variable "container_memory_request" { }
+
+variable "container_cpu_limit" { }
+variable "container_cpu_request" { }
