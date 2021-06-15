@@ -46,7 +46,7 @@ variable "replicas" {
 }
 
 variable "load_balancer_source_ranges" {
-  type = "list"
+  type = list(string)
   default = []
 }
 
